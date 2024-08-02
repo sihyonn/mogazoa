@@ -8,7 +8,7 @@
   "arrowParens": "always",
   "importOrder": [
     "^react(.*)",
-    "^(?!react)(.*)$",
+    "^@emotion/(.*)$",
     "<THIRD_PARTY_MODULES>",
     "^@/components/(.*)$",
     "^@/types/(.*)$",
@@ -22,6 +22,6 @@
     "^@/pages/(.*)$",
     "^[./]"
   ],
-  "importOrderSeparation": true,
+
   "plugins": ["@trivago/prettier-plugin-sort-imports"]
 }
