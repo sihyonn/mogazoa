@@ -24,19 +24,19 @@ const theme = Object.freeze({
       lineHeight: '2.85rem',
     },
 
-    subtitle1: {
+    subTitle1: {
       fontSize: '1.8rem',
       fontWeight: 500,
       lineHeight: '2.15rem',
     },
 
-    subtitle2: {
+    subTitle2: {
       fontSize: '2rem',
       fontWeight: 400,
       lineHeight: '2.4rem',
     },
 
-    subtitle3: {
+    subTitle3: {
       fontSize: '2rem',
       fontWeight: 600,
       lineHeight: '2.4rem',
@@ -76,7 +76,7 @@ const theme = Object.freeze({
       fontSize: '1.8rem',
       fontWeight: 600,
       lineHeight: '2.15rem',
-      color: '#background: #F1F1F5',
+      color: '#F1F1F5',
     },
 
     sideNav: {
