@@ -1,3 +1,5 @@
+import '@emotion/react';
+
 type color =
   | 'darkBlack'
   | 'black'
