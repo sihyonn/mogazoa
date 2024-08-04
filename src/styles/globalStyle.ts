@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
-import theme from '@/styles/theme';
 import reset from 'emotion-reset';
+import theme from '@/styles/theme';
 
 const globalStyle = css`
   ${reset}
@@ -24,6 +24,7 @@ const globalStyle = css`
     max-width: 100%;
     min-height: calc(var(--vh, 1vh) * 100);
     overflow-x: hidden;
+    background-color: ${theme.color.darkBlack};
   }
 
   div,

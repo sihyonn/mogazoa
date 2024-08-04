@@ -3,11 +3,10 @@ const theme = Object.freeze({
     darkBlack: '#1C1C22',
     black: '#252530',
     lightBlack: '#353542',
-
     darkGray: '#6E6E82',
     gray: '#9FA6B2',
-    lightGray: '#F1F1F5',
 
+    white: '#F1F1F5',
     main: '#5097FA',
     indigo: '#5363FF',
     yellow: '#FFC83C',
@@ -90,6 +89,13 @@ const theme = Object.freeze({
       fontWeight: 400,
       lineHeight: '2rem',
       color: '#6E6E82',
+    },
+
+    error: {
+      fontSize: '1.4rem',
+      fontWeight: 400,
+      lineHeight: '1.7rem',
+      color: '#FF0000',
     },
   },
 

@@ -6,7 +6,7 @@ type color =
   | 'lightBlack'
   | 'darkGray'
   | 'gray'
-  | 'lightGray'
+  | 'white'
   | 'main'
   | 'indigo'
   | 'yellow'
@@ -27,7 +27,8 @@ type typography =
   | 'input'
   | 'button'
   | 'sideNav'
-  | 'placeholder';
+  | 'placeholder'
+  | 'error';
 
 declare module '@emotion/react' {
   export interface Theme {
