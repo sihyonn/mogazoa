@@ -1,0 +1,5 @@
+export const BUTTON_STYLE = {
+  PRIMARY: 'PRIMARY',
+  SECONDARY: 'SECONDARY',
+  TERTIARY: 'TERTIARY',
+} as const;

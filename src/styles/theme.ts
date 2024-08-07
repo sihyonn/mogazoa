@@ -75,7 +75,6 @@ const theme = Object.freeze({
       fontSize: '1.8rem',
       fontWeight: 600,
       lineHeight: '2.15rem',
-      color: '#F1F1F5',
     },
 
     sideNav: {
