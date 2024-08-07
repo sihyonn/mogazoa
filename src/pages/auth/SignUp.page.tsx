@@ -1,3 +1,4 @@
+import Button from '@/components/common/Button';
 import Form from '@/components/common/form/Form';
 import FORM_INFO from '@/constants/FORM_INFO';
 import SignLayout from '@/styles/layout/SignLayout';
@@ -16,7 +17,7 @@ export default function SignUp() {
           passwordCheck: '',
         }}
       >
-        <button>회원가입</button>
+        <Button>회원가입</Button>
       </Form>
     </SignLayout>
   );
