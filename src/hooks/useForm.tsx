@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { FormValues, UseFormProps, UseFormReturn } from '@/types/form';
+import { AxiosError } from 'axios';
+import { Details, FormValues, UseFormProps, UseFormReturn } from '@/types/form';
 
 export default function useForm<T extends FormValues>({
   initialValues,
@@ -8,49 +9,50 @@ export default function useForm<T extends FormValues>({
   const [formData, setFormData] = useState(initialValues);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  const setError = (id: string, message: string) => {
+    setErrors((prev) => ({
+      ...prev,
+      [id]: message,
+    }));
+  };
+
+  const handleServerError = (detailError: Details) => {
+    const id = Object.keys(detailError)[0];
+    const message = detailError[id].message;
+    setError(id, message);
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [id]: value,
     }));
-    setErrors((prev) => ({
-      ...prev,
-      [id]: '',
-    }));
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     const errorMsg = validate(id, value, formData);
-    if (errorMsg) {
-      setErrors({
-        ...errors,
-        [id]: errorMsg,
-      });
-    }
+    setError(id, errorMsg || '');
   };
 
-  const handleSubmit = (
+  const handleSubmit = async (
     e: React.FormEvent<HTMLFormElement>,
     onSubmit: (data: T) => void,
   ) => {
     e.preventDefault();
-    let hasErrors = false;
 
-    for (const key of Object.keys(errors)) {
-      if (errors[key]) {
-        hasErrors = true;
-        break;
+    let hasErrors = Object.values(errors).some((error) => error);
+
+    if (!hasErrors) {
+      try {
+        await onSubmit(formData);
+      } catch (error) {
+        const err = error as AxiosError<Details, any>;
+        const details = err?.response?.data?.details;
+        handleServerError(details);
       }
     }
-
-    if (!hasErrors) onSubmit(formData);
-  };
-
-  const resetForm = () => {
-    setFormData(initialValues);
-    setErrors({});
   };
 
   return {
@@ -59,6 +61,5 @@ export default function useForm<T extends FormValues>({
     handleChange,
     handleBlur,
     handleSubmit,
-    resetForm,
   };
 }
