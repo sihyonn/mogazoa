@@ -6,7 +6,7 @@ export const FIELD_NAMES = {
 } as const;
 
 export const REGEX = {
-  EMAIL: /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+  EMAIL: /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+$/,
   PW: /^(?=.*[a-zA-Z])(?=.*[0-9])\S{8,20}$/,
 } as const;
 
