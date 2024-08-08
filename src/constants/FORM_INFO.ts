@@ -18,7 +18,7 @@ const SIGN_UP = [
     placeholder: '비밀번호를 입력해주세요.',
   },
   {
-    id: 'passwordCheck',
+    id: 'passwordConfirmation',
     type: 'password',
     label: '비밀번호 확인',
     placeholder: '비밀번호를 한번 더 입력해주세요.',

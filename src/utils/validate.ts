@@ -22,7 +22,7 @@ const validatePassword = (value: string) => {
 };
 
 const validateConfirmPassword = (value: string, password: string) => {
-  if (value !== password) return ERROR_MESSAGE.PW_CHECK;
+  if (value !== password) return ERROR_MESSAGE.PW_CONFIRMATION;
 };
 
 export const validateField = (
@@ -41,7 +41,7 @@ export const validateField = (
       return validateNickname(value);
     case 'password':
       return validatePassword(value);
-    case 'passwordCheck':
+    case 'passwordConfirmation':
       return validateConfirmPassword(value, formData.password);
     default:
       return '';
