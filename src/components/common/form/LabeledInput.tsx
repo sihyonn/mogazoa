@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import styled from '@emotion/styled';
+import EyeIconButton from '@/components/common/button/EyeIconButton';
 import { commonInputStyle } from '@/styles/commonStyle';
 
 interface LabeledInputProps
@@ -19,22 +21,32 @@ export default function LabeledInput({
   errorMsg,
   ...htmlInputProps
 }: LabeledInputProps) {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const inputType = type === 'password' && isPasswordVisible ? 'text' : type;
   const renderMessage = errorMsg ? <S.Message>{errorMsg}</S.Message> : null;
 
   return (
     <S.Container>
       <S.Label htmlFor={id}>{label}</S.Label>
-      <S.Input
-        id={id}
-        type={type}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        onBlur={onBlur}
-        $isError={!!errorMsg}
-        autoComplete={type === 'password' ? 'off' : 'on'}
-        {...htmlInputProps}
-      />
+      <S.InputWrapper>
+        <S.Input
+          id={id}
+          type={inputType}
+          value={value}
+          placeholder={placeholder}
+          onChange={onChange}
+          onBlur={onBlur}
+          $isError={!!errorMsg}
+          autoComplete={type === 'password' ? 'off' : 'on'}
+          {...htmlInputProps}
+        />
+        {type === 'password' && (
+          <EyeIconButton
+            onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+            isVisible={isPasswordVisible}
+          />
+        )}
+      </S.InputWrapper>
       {renderMessage}
     </S.Container>
   );
@@ -52,6 +64,11 @@ const S = {
   Label: styled.label`
     ${({ theme }) => theme.typography.input};
     color: ${({ theme }) => theme.color.white};
+  `,
+
+  InputWrapper: styled.div`
+    position: relative;
+    width: 100%;
   `,
 
   Input: styled.input<{ $isError?: boolean }>`
