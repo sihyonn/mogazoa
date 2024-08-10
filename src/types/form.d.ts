@@ -11,7 +11,7 @@ export interface InputInformations {
 
 export interface FormProps<T extends FormValues> {
   inputInformations: readonly InputInformations[];
-  onSubmit: () => void;
+  onSubmit: (data: T) => void;
   onError?: () => void;
   initialValues: T;
   children?: React.ReactNode;
@@ -28,6 +28,10 @@ export interface UseFormProps<T extends FormValues> {
   validate: ValidateFunction<T>;
 }
 
+export interface Details {
+  [key: string]: { message: string };
+}
+
 export interface UseFormReturn<T extends FormValues> {
   formData: T;
   errors: Record<string, string>;
@@ -37,5 +41,4 @@ export interface UseFormReturn<T extends FormValues> {
     e: React.FormEvent<HTMLFormElement>,
     onSubmit: (data: T) => void,
   ) => void;
-  resetForm: () => void;
 }

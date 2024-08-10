@@ -7,7 +7,6 @@ import useForm from '@/hooks/useForm';
 export default function Form<T extends FormValues>({
   inputInformations,
   onSubmit,
-  onError,
   initialValues,
   children,
 }: FormProps<T>) {
@@ -17,15 +16,12 @@ export default function Form<T extends FormValues>({
     handleChange,
     handleBlur,
     handleSubmit: useFormSubmit,
-    resetForm,
   } = useForm({ initialValues, validate: validateField });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    useFormSubmit(e, () => onSubmit());
-    // resetForm();
+    useFormSubmit(e, onSubmit);
   };
 
-  console.log(formData);
   return (
     <S.Form onSubmit={handleSubmit}>
       {inputInformations?.map((input) => (
