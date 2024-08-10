@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import styled from '@emotion/styled';
+import Gnb from '@/components/common/gnb/Gnb';
 
 export default function MainLayout({
   children,
@@ -8,7 +9,7 @@ export default function MainLayout({
 }) {
   return (
     <>
-      <S.Gnb>gnb 자리</S.Gnb>
+      <Gnb />
       <S.Container>
         <Outlet />
         {children}
@@ -18,16 +19,6 @@ export default function MainLayout({
 }
 
 const S = {
-  Gnb: styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    width: 100vw;
-    height: 10rem;
-    border: ${({ theme }) => theme.border};
-  `,
-
   Container: styled.div`
     width: 100%;
     min-height: 100vh;
