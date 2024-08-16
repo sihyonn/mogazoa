@@ -1,3 +1,4 @@
+import SocialLogin from '@/components/auth/sign-in/SocialLogin';
 import Button from '@/components/common/button/Button';
 import Form from '@/components/common/form/Form';
 import FORM_INFO from '@/constants/FORM_INFO';
@@ -17,8 +18,9 @@ export default function SignIn() {
           password: '',
         }}
       >
-        <Button style={{ marginTop: '6rem' }}>로그인</Button>
+        <Button style={{ margin: '6rem 0' }}>로그인</Button>
       </Form>
+      <SocialLogin />
     </SignLayout>
   );
 }
