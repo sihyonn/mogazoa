@@ -13,6 +13,12 @@ export default function Home() {
       >
         회원가입 바로가기
       </Button>
+      <Button
+        onClick={() => navigate(routes.signIn)}
+        style={{ width: '15rem' }}
+      >
+        로그인 바로가기
+      </Button>
     </div>
   );
 }
