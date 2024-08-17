@@ -9,4 +9,11 @@ export const authRequests = {
       data: signUpForm,
     });
   },
+  signIn: (signInForm: SignInFormValues) => {
+    return instance({
+      url: API.AUTH.SIGN_IN,
+      method: 'POST',
+      data: signInForm,
+    });
+  },
 };

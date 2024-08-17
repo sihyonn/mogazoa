@@ -4,3 +4,8 @@ interface SignUpFormValues {
   password: string;
   passwordConfirmation: string;
 }
+
+interface SignInFormValues {
+  email: string;
+  password: string;
+}
